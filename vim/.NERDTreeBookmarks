@@ -1,0 +1,7 @@
+tools ~/UNIT_DATA/tools
+startup ~/startup
+hubble ~/UNIT_DATA/projects/tsoft/codebases/hubble
+tsoft ~/UNIT_DATA/projects/tsoft
+unitdata ~/UNIT_DATA
+
+Store ~/UNIT_DATA/tools/code/reactjs/ex007.react-pro.001/src/store/Store.jsx

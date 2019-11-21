@@ -1,0 +1,3 @@
+#https://gist.github.com/kevinold/4749656
+--ignore-dir=node_modules/
+--ignore-dir=coverage/
