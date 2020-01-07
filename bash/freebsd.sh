@@ -9,6 +9,8 @@ function FreeBSDConfiguration()
 
     kbdcontrol -l ${STARTUP}/bsd/keymap.original.es.kbd
 
+    export XTERM=xterm-256-color
+    alias tmux="tmux -2"
     # Declare Alias
     alias gostartup="cd ~/startup/"
     alias gobash="cd ~/startup/bash"
