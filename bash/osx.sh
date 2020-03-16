@@ -32,8 +32,8 @@ function OSXConfiguration()
     # Execute script for git in prompt.
     PS1="$PS1\$($(cat "${HOME}/startup/bash/scripts/git-ps1.sh"))"
 
-    #source $WORKFOLDER/tools/code/linux/functions/grep/functions/g
-    #source $WORKFOLDER/tools/code/linux/functions/findrecursive
+    source $WORKFOLDER/tools/code/linux/functions/grep/functions/g
+    source $WORKFOLDER/tools/code/linux/functions/findrecursive
     source $WORKFOLDER/tools/code/git/functions/currentbranch
     source $WORKFOLDER/tools/code/git/functions/showbranches
     source $WORKFOLDER/tools/code/bash/scripts/functions/fzf_searches.sh
@@ -65,8 +65,6 @@ function RunFunctionsScriptsForGrep(){
 
 function VimConfigurationPlugins(){
     export FZF_DEFAULT_COMMAND='ag -g ""'
-    #nvim needs set locale
-    export LC_ALL=en_US.UTF-8
 }
 
 OSXConfiguration
