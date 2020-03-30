@@ -95,7 +95,7 @@ set updatetime=1000
 map <leader>a :Ack! ""<Left>
 map <leader>g :Grepper<CR>
 if executable('ag')
-    let g:ackprg ='ag --vimgrep'
+    let g:ackprg ='ag --ignore node_modules --vimgrep '
 endif
 "
 "================ FZF =============="

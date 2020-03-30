@@ -6,10 +6,12 @@ function OSXConfiguration()
     WORKFOLDER="/Users/${USER}/UNIT_DATA"
 
     # Declare Alias
+    alias goprojects="cd ${WORKFOLDER}/projects/"
     alias gostartup="cd ~/startup/"
     alias gobash="cd ~/startup/bash"
     alias gotools="cd ${WORKFOLDER}/tools/"
     alias gogit="cd ${WORKFOLDER}/tools/code/git"
+    alias gojs="cd ${WORKFOLDER}/tools/code/javascript"
     alias gocheat="cd ${WORKFOLDER}/tools/code/unix/cheats/.cheat"
     alias goc="cd ${WORKFOLDER}/tools/code/c"
     alias goclients="cd ${WORKFOLDER}/clients"
@@ -30,7 +32,7 @@ function OSXConfiguration()
     export EDITOR="/usr/local/bin/vim"
     export ECLIPSE_HOME="/Applications/Eclipse.app/Contents/Eclipse/"
     # Execute script for git in prompt.
-    PS1="$PS1\$($(cat "${HOME}/startup/bash/scripts/git-ps1.sh"))"
+    #PS1="$PS1\$($(cat "${HOME}/startup/bash/scripts/git-ps1.sh"))"
 
     #source $WORKFOLDER/tools/code/linux/functions/grep/functions/g
     #source $WORKFOLDER/tools/code/linux/functions/findrecursive
@@ -64,7 +66,7 @@ function RunFunctionsScriptsForGrep(){
 }
 
 function VimConfigurationPlugins(){
-    export FZF_DEFAULT_COMMAND='ag -g ""'
+    export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir node_modules/'
     #nvim needs set locale
     export LC_ALL=en_US.UTF-8
 }

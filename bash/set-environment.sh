@@ -51,7 +51,7 @@ function GeneralConfiguration()
 	alias ls='ls -la'
 	alias cd..="cd .."
 	alias grep="grep -n --color"
-	alias weather="curl http://wttr.in/Argentina"
+	alias weather="curl http://wttr.in"
 	alias ghome="cd ~"
 	alias path='echo -e ${PATH//:/\\n}'
 	#avoid delete massive.
