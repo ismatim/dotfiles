@@ -5,7 +5,7 @@ function FreeBSDConfiguration()
     set -o vi
     export PATH=$PATH:~/usr/local/bin
     # Declare variables.
-    export WORKFOLDER="/usr/home/${USER}"
+    export WORKFOLDER="/home/${USER}"
 
     kbdcontrol -l ${STARTUP}/bsd/keymap.original.es.kbd
 
@@ -20,7 +20,7 @@ function FreeBSDConfiguration()
     alias goc="cd ${WORKFOLDER}/tools/code/c"
     alias goclients="cd ${WORKFOLDER}/clients"
     alias gobashex="cd ${WORKFOLDER}/tools/code/bash"
-    alias ls="ls -ilaG"
+    alias ls="ls -la"
     alias gosoftwareproject="cd ${WORKFOLDER}/"
     alias goreact="cd ${WORKFOLDER}/tools/code/reactjs"
     alias gonodejs="cd ${WORKFOLDER}/nodejs"
@@ -34,11 +34,11 @@ function FreeBSDConfiguration()
     # Execute script for git in prompt.
     #PS1="$PS1\$($(cat "${HOME}/startup/bash/scripts/git-ps1.sh"))"
 
-    source $WORKFOLDER/tools/code/unix/functions/grep/functions/g
-    source $WORKFOLDER/tools/code/unix/functions/findrecursive
-    source $WORKFOLDER/tools/code/git/functions/currentbranch
-    source $WORKFOLDER/tools/code/git/functions/showbranches
-    source $WORKFOLDER/tools/code/bash/scripts/functions/fzf_searches.sh
+#    source $WORKFOLDER/tools/code/unix/functions/grep/functions/g
+#    source $WORKFOLDER/tools/code/unix/functions/findrecursive
+#    source $WORKFOLDER/tools/code/git/functions/currentbranch
+#    source $WORKFOLDER/tools/code/git/functions/showbranches
+#    source $WORKFOLDER/tools/code/bash/scripts/functions/fzf_searches.sh
 
     #load clients
     #source $WORKFOLDER/clients/clients.sh

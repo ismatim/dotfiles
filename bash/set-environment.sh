@@ -16,16 +16,21 @@
 export PS1="\T|\W>"
 
 #'Msys' 'GNU/Linux' 'Cygwin'
-BSD='FreeBSD'
+OpenBSD='OpenBSD'
+FreeBSD='FreeBSD'
 LINUX='Linux'
 MAC='Darwin'
-OS=`uname | grep "${LINUX}\|Msys\|Windows\|Cyg\|${MAC}\|${BSD}"`
+OS=`uname | egrep "${LINUX}\|Msys\|Windows\|Cyg\|${MAC}\|${FreeBSD}\|OpenBSD"`
+
+echo "OS: ${OS}"
 
 if [[ $OS == '' ]]; then
 	echo 'The O.S. is not recognized. Choose option please:'
 	echo '1. Linux'
 	echo '2. OSX'
 	echo '3. Windows'
+	echo '4. FreeBSD'
+	echo '5. OpenBSD'
 	read Option
 	if [[ $Option == 1 ]]; then
 		OS='Linux'
@@ -35,6 +40,12 @@ if [[ $OS == '' ]]; then
 	fi
 	if [[ $Option == 3 ]]; then
 		OS='Windows'
+	fi
+	if [[ $Option == 4 ]]; then
+		OS='FreeBSD'
+	fi
+	if [[ $Option == 5 ]]; then
+		OS='OpenBSD'
 	fi
 fi
 
@@ -99,6 +110,13 @@ function FreeBSDConfiguration()
 	source  ${STARTUP}/bash/freebsd.sh
 }
 
+function OpenBSDConfiguration()
+{
+    STARTUP="/home/ismatim/startup"
+	source  ${STARTUP}/bash/openbsd.sh
+}
+
+
 echo 'System is' $OS
 echo 'setting '$OS' development environment...'
 GeneralConfiguration
@@ -115,6 +133,10 @@ case $OS in
 		;;
 	*"FreeBSD"*)
 		FreeBSDConfiguration
+		;;
+	*"OpenBSD"*)
+		OpenBSDConfiguration
+
 esac
 
 echo 'Done: Loading Setting Environment.'
