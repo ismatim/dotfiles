@@ -15,6 +15,7 @@ else
   Plugin 'roxma/nvim-yarp'
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
+Plugin 'leafgarland/typescript-vim'
 Plugin 'w0rp/ale' "Syntax
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'xolox/vim-misc'
@@ -95,7 +96,7 @@ set updatetime=1000
 map <leader>a :Ack! ""<Left>
 map <leader>g :Grepper<CR>
 if executable('ag')
-    let g:ackprg ='ag --ignore node_modules --vimgrep '
+    let g:ackprg ='ag --ignore yarn.lock --ignore node_modules --vimgrep '
 endif
 "
 "================ FZF =============="

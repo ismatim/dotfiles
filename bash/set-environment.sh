@@ -20,7 +20,7 @@ OpenBSD='OpenBSD'
 FreeBSD='FreeBSD'
 LINUX='Linux'
 MAC='Darwin'
-OS=`uname | egrep "${LINUX}\|Msys\|Windows\|Cyg\|${MAC}\|${FreeBSD}\|OpenBSD"`
+OS=`uname | grep "${LINUX}\|Msys\|Windows\|Cyg\|${MAC}\|${FreeBSD}\|OpenBSD"`
 
 echo "OS: ${OS}"
 
