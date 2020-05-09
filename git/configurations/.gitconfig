@@ -13,6 +13,7 @@
 	preloadindex = true
 	fscache = true
 	whitespace = cr-at-eol
+	ignorecase = false
 
 [push]
 	default = simple

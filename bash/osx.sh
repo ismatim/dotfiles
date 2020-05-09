@@ -34,8 +34,8 @@ function OSXConfiguration()
     # Execute script for git in prompt.
     #PS1="$PS1\$($(cat "${HOME}/startup/bash/scripts/git-ps1.sh"))"
 
-    source $WORKFOLDER/tools/code/linux/functions/grep/functions/g
-    source $WORKFOLDER/tools/code/linux/functions/findrecursive
+    source $WORKFOLDER/tools/code/unix/functions/grep/functions/g
+    source $WORKFOLDER/tools/code/unix/functions/findrecursive
     source $WORKFOLDER/tools/code/git/functions/currentbranch
     source $WORKFOLDER/tools/code/git/functions/showbranches
     source $WORKFOLDER/tools/code/bash/scripts/functions/fzf_searches.sh

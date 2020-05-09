@@ -153,9 +153,14 @@ onoremap il( :<c-u>normal! F)vi(<cr>
 onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
 noremap ah :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rg_vk0"<cr>
 "
+"
 "=======Grep========"
-noremap <leader>g :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
-
+"noremap <leader>g :execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
+nnoremap <leader>g :Grepper -tool git -noopen -jump<cr>
+"TODO: For look in the current buffer: Grepper -buffer -query word-to-search
+"TODO: For look loaded files: Grepper  -query word-to-search
+"start searching the word under the cursor.
+nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
 "=======Vue========="
 "nnoremap <leader>pvu :%!vue-formatter<CR>
 "autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
@@ -166,7 +171,18 @@ nnoremap <leader>l :ALEFix<cr>
 inoremap <leader>l :execute "normal! :ALEFix"<cr>
 vnoremap <leader>l <ESC>:ALEFix<cr>
 
+"for the list location navigation:
+nnoremap <space>l :lnext<CR>
+nnoremap <space>p :lprevious<CR>
+nnoremap <space>r :lrewind<CR>
+
+"TODO: find best way to show erros through erroformat in location list.
+" check: https://github.com/jonsmithers/dotfiles/blob/master/vim/vimrc
+
 "======= Open Session====" 
 nnoremap <leader>so :OpenSession!<Space>
 nnoremap <leader>ss :SaveSession!<Space>
 
+
+"======= Prettier ======="
+nmap <Leader>p <Plug>(PrettierAsync)
