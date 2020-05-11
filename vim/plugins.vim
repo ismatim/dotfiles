@@ -30,6 +30,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'ryanoasis/vim-devicons'
 Plugin 'godlygeek/tabular'
 ""Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
@@ -105,7 +106,7 @@ let g:gutentags_ctags_exclude = [
       \ 'tags*',
       \ ]
 "call pathogen#helptags()
-
+set encoding=UTF-8
 "============== coc ================"
 
 " Give more space for displaying messages.
@@ -216,30 +217,6 @@ let g:fzf_tags_command = 'ctags -R'
 
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})a
-
-"==== Custom Mappings ===="
-
-nnoremap <leader>s :FZF!
-inoremap <leader>s :execute "normal! :FZF!"
-vnoremap <leader>s <ESC>:FZF!
-"show buffers
-vnoremap <leader>sb :Buffers!
-"Show preview of files
-nnoremap <leader>sp :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))
 
 
 
