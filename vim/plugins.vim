@@ -18,20 +18,20 @@ call vundle#begin()
 "endif
 Plugin 'neoclide/coc.nvim'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'leafgarland/typescript-vim'
+"Plugin 'leafgarland/typescript-vim'
 Plugin 'ludovicchabant/vim-gutentags' 
 Plugin 'w0rp/ale' "Syntax
-Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'terryma/vim-multiple-cursors'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'mattn/emmet-vim' " Expand html tags
-Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline'
 ""Plugin 'vim-airline/vim-airline-themes'
 Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ryanoasis/vim-devicons'
-Plugin 'godlygeek/tabular'
+"Plugin 'godlygeek/tabular'
 ""Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive' " help fugitive
@@ -112,10 +112,6 @@ set encoding=UTF-8
 " Give more space for displaying messages.
 set cmdheight=2
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
@@ -125,7 +121,7 @@ set signcolumn=yes
 "=========== git-gutter==========="
 "TODO: enable this by default
 "TODO: create shortcut
-let g:gitgutter_log=1 
+"let g:gitgutter_log=1 
 "=========== vim-fugitive ========"
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 "=========== Deoplete ========"
@@ -150,6 +146,8 @@ let g:vim_monokai_tasty_italic = 1
 colorscheme vim-monokai-tasty 
 
 "============= Git Gutter =========="
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
 set updatetime=1000
 "================ ACK =============="
 
