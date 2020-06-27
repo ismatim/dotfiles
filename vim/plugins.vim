@@ -16,7 +16,7 @@ call vundle#begin()
   "Plugin 'roxma/nvim-yarp'
   "Plugin 'roxma/vim-hug-neovim-rpc'
 "endif
-Plugin 'neoclide/coc.nvim'
+"Plugin 'neoclide/coc.nvim'
 Plugin 'gmarik/Vundle.vim'
 "Plugin 'leafgarland/typescript-vim'
 Plugin 'ludovicchabant/vim-gutentags' 
@@ -35,7 +35,7 @@ Plugin 'ryanoasis/vim-devicons'
 ""Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-fugitive' " help fugitive
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 Plugin 'junegunn/goyo.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
@@ -46,9 +46,9 @@ Plugin 'prettier/vim-prettier'
 Plugin 'epilande/vim-es2015-snippets'
 Plugin 'epilande/vim-react-snippets'
 Plugin 'SirVer/ultisnips'
-Plugin 'neoclide/vim-jsx-improve'
-Plugin 'cakebaker/scss-syntax.vim'
-"Plugin 'Yggdroot/indentLine'
+"Plugin 'justinmk/vim-gtfo'
+Plugin 'Yggdroot/indentLine'
+"Plugin 'cakebaker/scss-syntax.vim'
 "Plugin 'jparise/vim-graphql'"
 "Plugin 'itchyny/lightline.vim'
 "Plugin 'logico-dev/typewriter' "from logico
@@ -68,6 +68,9 @@ filetype plugin indent on    " required
 "======== PLUGINS MAPPING =========="
 "==================================="
 "============ vim-gutentags ========"
+" vim-gtfo "
+let g:gtfo#terminals = { 'mac': 'iterm' }
+
 "let g:gutentags_modules=['ctags', 'gtags_cscope']
 let g:gutentags_add_default_project_roots = 0
 let g:gutentags_project_root = ['package.json', '.git']

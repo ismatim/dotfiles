@@ -64,6 +64,11 @@ nnoremap <leader>w :w<cr>
 "vnoremap <leader>c "+y
 noremap <leader>rt :+tabmove<CR>
 noremap <leader>rT :-tabmove<CR>
+
+" ----------------------------------------------------------------------------
+" <Leader>c Close quickfix/location window
+"" ----------------------------------------------------------------------------
+nnoremap <leader>c :cclose<bar>lclose<cr>
 "
 "============ Git Gutter===================="
 "And you can turn line highlighting on and off (defaults to off):
