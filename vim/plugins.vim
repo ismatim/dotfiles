@@ -18,7 +18,9 @@ call vundle#begin()
 "endif
 "Plugin 'neoclide/coc.nvim'
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'leafgarland/typescript-vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'neoclide/vim-jsx-improve'
 Plugin 'ludovicchabant/vim-gutentags' 
 Plugin 'w0rp/ale' "Syntax
 "Plugin 'terryma/vim-multiple-cursors'
@@ -151,7 +153,7 @@ colorscheme vim-monokai-tasty
 "============= Git Gutter =========="
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=1000
+"set updatetime=1000
 "================ ACK =============="
 
 map <leader>a :Ack! ""<Left>

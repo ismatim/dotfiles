@@ -8,7 +8,6 @@ fe() (
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 )
 
-
 # Modified version where you can press
 #   - CTRL-O to open with `open` command,
 #   - CTRL-E or Enter key to open with the $EDITOR
@@ -20,7 +19,6 @@ fo() (
     [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
   fi
 )
-
 
 
 #----Preview files----

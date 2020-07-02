@@ -64,7 +64,7 @@ function RunFunctionsScriptsForGrep(){
 }
 
 function VimConfigurationPlugins(){
-    export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir node_modules/  --ignore-dir Music/ --ignore-dir Library/  --ignore-dir tmp/'
+    export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir node_modules/  --ignore-dir Music/ --ignore-dir Library/  --ignore-dir tmp/ --ignore-dir temp/ --ignore-dir Pictures/Photos\ Library.photoslibrary/'
     #nvim needs set locale
     export LC_ALL=en_US.UTF-8
 }
