@@ -50,8 +50,6 @@ function OSXConfiguration()
     #source /usr/local/etc/bash_completion.d/pass
     RunFunctionsScriptsForGrep
     VimConfigurationPlugins
-
-    #fzf
 }
 
 function RunFunctionsScriptsForGrep(){
@@ -66,7 +64,7 @@ function RunFunctionsScriptsForGrep(){
 }
 
 function VimConfigurationPlugins(){
-    export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir node_modules/'
+    export FZF_DEFAULT_COMMAND='ag -g "" --ignore-dir node_modules/  --ignore-dir Music/ --ignore-dir Library/  --ignore-dir tmp/'
     #nvim needs set locale
     export LC_ALL=en_US.UTF-8
 }
