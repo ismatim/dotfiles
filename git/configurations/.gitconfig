@@ -26,6 +26,7 @@
     lastx ="!f(){ git log  --oneline --graph --decorate  -$1 HEAD;}; f"
     acp="!f(){ git add -u; git commit -m \"$@\"; git push;}; f"
     ac="!f(){ git add -u; git commit -m \"$@\";}; f"
+    cbp = "!f() { git cb $1; git push -u origin $1;}; f"
     bs="!f(){ git branch --set-upstream-to $@; }; f"
     ps="!f(){ git push --set-upstream origin $@; }; f"
     logrange="!f(){ git log --pretty=short -u -L $@;}; f"
@@ -39,9 +40,9 @@
     flw = log -u --word-diff
     glog = log -E -i --grep 
     unstage = reset HEAD --
-    #ra = "!f() { git add remote $1 $2; }; f"
-    #ours = "!f() { git checkout --ours $@ && git add $@; }; f"
-    #theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+    ra = "!f() { git add remote $1 $2;}; f"
+    ours = "!f() { git checkout --ours $@ && git add $@;}; f"
+    theirs = "!f() { git checkout --theirs $@ && git add $@;}; f"
     pulma = pull origin master
     pusma = push origin master
     comm = commit -m
