@@ -7,7 +7,7 @@ function FreeBSDConfiguration()
     # Declare variables.
     export WORKFOLDER="/usr/home/${USER}"
 
-    kbdcontrol -l ${STARTUP}/bsd/keymap.original.es.kbd
+    #kbdcontrol -l ${STARTUP}/bsd/keymap.original.es.kbd
 
     export XTERM=xterm-256-color
     alias tmux="tmux -2"
@@ -54,6 +54,8 @@ function FreeBSDConfiguration()
     VimConfigurationPlugins
 
     #fzf
+
+    export LANG=us_US.UTF-8
 }
 
 function RunFunctionsScriptsForGrep(){
