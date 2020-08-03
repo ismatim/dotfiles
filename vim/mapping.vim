@@ -134,9 +134,9 @@ nnoremap <leader>rg :Rg!<CR>
 nnoremap <leader>gl :Git! log -p -- %<CR>
 
 "show buffers
-vnoremap <leader>sb :Buffers!
+vnoremap <leader>sb :Buffers!<cr>
 "Show preview of files
-nnoremap <leader>sp :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))
+nnoremap <leader>sp :call fzf#vim#gitfiles('', fzf#vim#with_preview('right'))<cr>
 
 "============ Buffers Handlers ============"
 
@@ -216,7 +216,7 @@ nnoremap <space>r :lrewind<CR>
 "TODO: find best way to show erros through erroformat in location list.
 " check: https://github.com/jonsmithers/dotfiles/blob/master/vim/vimrc
 
-"======= Open Session====" 
+"======= Open Session===="
 nnoremap <leader>so :OpenSession!<Space>
 nnoremap <leader>ss :SaveSession!<Space>
 

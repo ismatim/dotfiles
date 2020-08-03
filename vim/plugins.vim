@@ -19,7 +19,7 @@ call vundle#begin()
 "Plugin 'neoclide/coc.nvim'
 Plugin 'gmarik/Vundle.vim'
 "Plugin 'leafgarland/typescript-vim'
-"Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'neoclide/vim-jsx-improve'
 "Plugin 'ludovicchabant/vim-gutentags' 
 Plugin 'w0rp/ale' "Syntax
@@ -32,7 +32,7 @@ Plugin 'mattn/emmet-vim' " Expand html tags
 Plugin 'patstockwell/vim-monokai-tasty'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'ryanoasis/vim-devicons'
+"Plugin 'ryanoasis/vim-devicons'
 "Plugin 'godlygeek/tabular'
 ""Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdcommenter'
@@ -47,7 +47,7 @@ Plugin 'mhinz/vim-grepper'
 Plugin 'prettier/vim-prettier'
 Plugin 'epilande/vim-es2015-snippets'
 Plugin 'epilande/vim-react-snippets'
-"Plugin 'SirVer/ultisnips'
+":wq:Plugin 'SirVer/ultisnips'
 "Plugin 'justinmk/vim-gtfo'
 Plugin 'Yggdroot/indentLine'
 "Plugin 'cakebaker/scss-syntax.vim'
@@ -71,7 +71,7 @@ filetype plugin indent on    " required
 "==================================="
 "============ vim-gutentags ========"
 " vim-gtfo "
-let g:gtfo#terminals = { 'mac': 'iterm' }
+"let g:gtfo#terminals = { 'mac': 'iterm' }
 
 "let g:gutentags_modules=['ctags', 'gtags_cscope']
 let g:gutentags_add_default_project_roots = 0
@@ -228,7 +228,7 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
 "" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline#extensions#tabline#fnamemod = ':t'
 "===== typewriter theme ==== "
 
 "========= Autoformat ========="

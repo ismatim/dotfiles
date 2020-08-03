@@ -61,12 +61,12 @@ set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
 
 "=======Backup======"
-set backup                       " enable backups
+set nobackup                       " enable backups
 set noswapfile
 
-set undodir=~/.vim/tmp/undo/     " undo files
-set backupdir=~/.vim/tmp/backup/ " backups
-set directory=~/.vim/tmp/swap/   " swap files
+set undodir=~/.vim/tmp/undo//     " undo files
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap//   " swap files
 
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))

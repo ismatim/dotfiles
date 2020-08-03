@@ -1,3 +1,6 @@
+#freebsd
+freebsd/.git-credentials
+
 #VIM
 *.*.orig
 *.swp

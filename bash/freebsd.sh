@@ -55,7 +55,7 @@ function FreeBSDConfiguration()
 
     #fzf
 
-    export LANG=us_US.UTF-8
+    export LANG=en_US.UTF-8
 }
 
 function RunFunctionsScriptsForGrep(){
