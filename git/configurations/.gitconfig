@@ -73,6 +73,7 @@
     pulltheirs =  pull -X theirs
     mergetheirs = merge --strategy-option theirs
     mergeours = merge --strategy-option ours
+    bl = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
 #---- alias with vim ----
     diffv ="!f(){ git diff $1 $2 $3 $4 | vim -R -;}; f"
     logv ="!f(){ git log $1 $2 $3 $4  | vim -R -;}; f"
