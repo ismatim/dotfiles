@@ -1,118 +1,65 @@
 
 set nocompatible
-filetype off
 
-" set the runtime path to include Vundle and initialize
-"====Vundle for Vim ===="
-set rtp+=~/.vim/bundle/Vundle.vim
-"====Vundle for gVim===="
-"set rtp+=~/vimfiles/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('$HOME/.vim/plugged')
 
-"if has('nvim')
-  "Plugin 'shougo/deoplete.nvim' "after install or update, execute: UpdateRemotePlugins
-"else
-  "Plugin 'shougo/deoplete.nvim' "after install or update, execute: UpdateRemotePlugins
-  "Plugin 'roxma/nvim-yarp'
-  "Plugin 'roxma/vim-hug-neovim-rpc'
-"endif
-"Plugin 'neoclide/coc.nvim'
-Plugin 'gmarik/Vundle.vim'
-"Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'neoclide/vim-jsx-improve'
-"Plugin 'ludovicchabant/vim-gutentags' 
-Plugin 'w0rp/ale' "Syntax
-"Plugin 'terryma/vim-multiple-cursors'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-session'
-Plugin 'mattn/emmet-vim' " Expand html tags
-"Plugin 'vim-airline/vim-airline'
-""Plugin 'vim-airline/vim-airline-themes'
-Plugin 'patstockwell/vim-monokai-tasty'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-"Plugin 'ryanoasis/vim-devicons'
-"Plugin 'godlygeek/tabular'
-""Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-fugitive' " help fugitive
-"Plugin 'airblade/vim-gitgutter'
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-""Plugin 'yuki-ycino/fzf-preview.vim' " NOT WORK IN VIM'
-Plugin 'mileszs/ack.vim'
-Plugin 'mhinz/vim-grepper'
-Plugin 'prettier/vim-prettier'
-Plugin 'epilande/vim-es2015-snippets'
-Plugin 'epilande/vim-react-snippets'
-":wq:Plugin 'SirVer/ultisnips'
-"Plugin 'justinmk/vim-gtfo'
-Plugin 'Yggdroot/indentLine'
-"Plugin 'cakebaker/scss-syntax.vim'
-"Plugin 'jparise/vim-graphql'"
-"Plugin 'itchyny/lightline.vim'
-"Plugin 'logico-dev/typewriter' "from logico
-"Plugin 'mhartington/oceanic-next'
-"Plugin 'Quramy/tsuquyomi'
-"Plugin 'mzlogin/vim-markdown-toc' "Create a table of content
-" Java IDE - bit slow, but awesome.
-"Plugin 'artur-shaik/vim-javacomplete2'
-" All of your Plugins must be added before the following line
-"Plugin 'rhysd/vim-clang-format'
-call vundle#end()            " required
-filetype plugin indent on    " required
+Plug 'junegunn/vim-easy-align'
+Plug 'terryma/vim-expand-region'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive' " help fugitive
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" INTEGRATION TOOLS
+
+augroup LastPositionJump
+  autocmd! BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+Plug 'w0rp/ale', {'for': ['sql', 'vim', 'bash', 'sh', 'javascript', 'typescript' ]}
+  let g:ale_lint_on_text_changed='normal'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+Plug 'mattn/emmet-vim' " Expand html tags
+"Plug 'patstockwell/vim-monokai-tasty'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-grepper'
+Plug 'ianks/vim-tsx', { 'for': ['tsx'] }
+Plug 'leafgarland/typescript-vim', { 'for': ['tsx', 'ts'] }
+"
+" Linters
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'branch': 'release/1.x',
+  \ 'for': [ 'javascript', 'typescript', 'css', 'json', 'markdown', 'yaml', 'html' ] }
+ 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'epilande/vim-es2015-snippets'
+
+call plug#end()
 
 " TODO: Move all this mappings to corresponing plugins.name.vim files
 
 "==================================="
 "======== PLUGINS MAPPING =========="
 "==================================="
-"============ vim-gutentags ========"
-" vim-gtfo "
-"let g:gtfo#terminals = { 'mac': 'iterm' }
-
-"let g:gutentags_modules=['ctags', 'gtags_cscope']
-let g:gutentags_add_default_project_roots = 0
-let g:gutentags_project_root = ['package.json', '.git']
-let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
-let g:gutentags_generate_on_new = 1
-let g:gutentags_generate_on_missing = 1
-let g:gutentags_generate_on_write = 1
-let g:gutentags_generate_on_empty_buffer = 0
-let g:gutentags_ctags_extra_args = [
-      \ '--tag-relative=yes',
-      \ '--fields=+ailmnS',
-      \ ]
-let g:gutentags_ctags_exclude = [
-      \ '*.git', '*.svg', '*.hg',
-      \ '*/tests/*',
-      \ 'build',
-      \ 'dist',
-      \ '*sites/*/files/*',
-      \ 'bin',
-      \ 'node_modules',
-      \ 'bower_components',
-      \ '.cache',
-      \ 'cache',
-      \ 'docs',
-      \ 'bundle',
-      \ 'vendor',
-      \ '*.md',
-      \ '*-lock.json',
-      \ '*.lock',
-      \ '*bundle*.js',
-      \ '*build*.js',
-      \ '*.json',
-      \ '*.min.*',
-      \ '*.map',
-      \ '*.zip',
-      \ 'tags*',
-      \ ]
-"call pathogen#helptags()
 set encoding=UTF-8
-"============== coc ================"
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -123,15 +70,10 @@ set shortmess+=c
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 set signcolumn=yes
-"=========== git-gutter==========="
-"TODO: enable this by default
-"TODO: create shortcut
-"let g:gitgutter_log=1 
 "=========== vim-fugitive ========"
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 "=========== Deoplete ========"
-"let g:deoplete#enable_at_startup = 1
-"set omnifunc=syntaxcomplete#Complete
+let g:deoplete#enable_at_startup = 1
 "
 "=========== Utils Snippet ========"
 " Examples of use: insert mode: rfc<c-l>
@@ -142,28 +84,21 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "" If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-""" disable preview window
+"" disable preview window
 "set completeopt-=preview
 
 "====== Color Monokai======= "
 "let macvim_skip_colorscheme=1
-let g:vim_monokai_tasty_italic = 1 
-colorscheme vim-monokai-tasty 
+"let g:vim_monokai_tasty_italic = 1 
+"colorscheme vim-monokai-tasty 
 
-"============= Git Gutter =========="
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-"set updatetime=1000
 "================ ACK =============="
 
 map <leader>a :Ack! ""<Left>
 if executable('ag')
     let g:ackprg ='ag --ignore yarn.lock --ignore node_modules --vimgrep '
 endif
-"
-"
-"=========== vim-grepper ==========="
-"
+
 "================ FZF =============="
 " This is the default extra key bindings
 let g:fzf_action = {
@@ -315,30 +250,47 @@ let g:prettier#exec_cmd_async = 1
 
 "remove autofocus after bug
 let g:prettier#quickfix_auto_focus = 0
-"-------- LanguageClient-neovim-----"
-" Required for operations modifying multiple buffers like rename.
-"let g:LanguageClient_devel = 1
-"let g:LanguageClient_loggingFile = '/tmp/LanguageClient.log'
-"let g:LanguageClient_loggingLevel = 'INFO'
-"let g:LanguageClient_serverStderr = '/tmp/LanguageServer.log'
-"let g:LanguageClient_serverCommands = {
-"\ 'typescript': ['javascript-typescript-stdio'],
-"\ 'javascript': ['javascript-typescript-stdio'],
-"\ 'css': ['css-languageserver', '--stdio'],
-"\ 'scss': ['css-languageserver', '--stdio'],
-"\ 'less': ['css-languageserver', '--stdio'],
-"\ 'json': ['json-languageserver', '--stdio'],
-"\ 'html': ['html-languageserver', '--stdio'],
-"\ 'Dockerfile': ['docker-langserver', '--stdio']
-"\ }
 
-" Or map each action separately
-"nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-"nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-"nnoremap <silent> <F6> :call LanguageClient#textDocument_rename()<CR>
-"nnoremap <F7> :call LanguageClient_contextMenu()<CR>
 
-"-------- C / C++ ------"
-"autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-"autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+syntax on
+highlight clear
+
+highlight CursorColumn ctermfg=NONE    ctermbg=236  cterm=NONE
+highlight CursorLine   ctermfg=NONE    ctermbg=236  cterm=NONE
+highlight CursorLineNr ctermfg=7       ctermbg=236  cterm=NONE
+highlight DiffAdd      ctermfg=2       ctermbg=NONE cterm=NONE
+highlight DiffChange   ctermfg=2       ctermbg=NONE cterm=NONE
+highlight DiffDelete   ctermfg=1       ctermbg=NONE cterm=NONE
+highlight DiffText     ctermfg=2       ctermbg=236  cterm=NONE
+highlight FoldColumn   ctermfg=248     ctermbg=NONE cterm=italic
+highlight Folded       ctermfg=248     ctermbg=NONE cterm=italic
+highlight LineNr       ctermfg=238     ctermbg=NONE cterm=NONE
+highlight MatchParen   cterm=underline ctermbg=NONE cterm=NONE
+highlight NonText      ctermfg=236     ctermbg=NONE cterm=NONE
+highlight Normal       ctermfg=NONE    ctermbg=NONE cterm=NONE
+highlight Pmenu        ctermfg=15      ctermbg=236  cterm=NONE
+highlight PmenuSbar    ctermfg=7       ctermbg=NONE cterm=NONE
+highlight PmenuSel     ctermfg=236     ctermbg=2    cterm=NONE
+highlight PmenuThumb   ctermfg=7       ctermbg=NONE cterm=NONE
+highlight SignColumn   ctermfg=NONE    ctermbg=NONE cterm=NONE
+highlight SpellBad     ctermfg=NONE    ctermbg=NONE cterm=underline
+highlight SpellCap     ctermfg=NONE    ctermbg=NONE cterm=underline
+highlight Error        ctermfg=1       ctermbg=NONE cterm=underline
+highlight StatusLine   ctermfg=15      ctermbg=236  cterm=bold
+highlight StatusLineNC ctermfg=245     ctermbg=0    cterm=NONE
+highlight VertSplit    ctermfg=236     ctermbg=236  cterm=NONE
+highlight Visual       ctermfg=NONE    ctermbg=238  cterm=NONE
+highlight WildMenu     ctermfg=236     ctermbg=2    cterm=NONE
+highlight qfFileName   ctermfg=245     ctermbg=NONE cterm=italic
+highlight qfLineNr     ctermfg=238     ctermbg=NONE cterm=NONE
+highlight qfSeparator  ctermfg=0       ctermbg=NONE cterm=NONE
+
+highlight Comment        ctermfg=248 ctermbg=NONE cterm=NONE
+highlight String         ctermfg=10  ctermbg=NONE cterm=NONE
+highlight htmlH1         ctermfg=15  ctermbg=NONE cterm=bold
+highlight htmlItalic     ctermfg=7   ctermbg=NONE cterm=italic
+highlight htmlItalicBold ctermfg=15  ctermbg=NONE cterm=italic
+highlight htmlBoldItalic ctermfg=15  ctermbg=NONE cterm=bold
+
+
 

@@ -5,13 +5,16 @@ syntax on
 if has("autocmd")
     " Setup indentation
     autocmd FileType pug setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType *.ts setlocal ts=2 sts=0 sw=2 expandtab
+    "autocmd FileType *.ts setlocal ts=2 sts=0 sw=2 expandtab
     autocmd BufNewFile,BufRead *.ejs set filetype=html
     autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
-    autocmd BufRead,BufNewFile .jsx set filetype=javascript.jsx
+    "autocmd BufRead,BufNewFile .jsx set filetype=javascript.jsx
     autocmd BufRead,BufNewFile .*rc set filetype=json
     autocmd BufRead,BufNewFile .mongorc set filetype=javascript
 endif
+
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 "===== HTML ======"
 augroup filetype_html
@@ -93,11 +96,10 @@ augroup name_group
 augroup END
 
 "======= JSX ===== "
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-augroup END
+"augroup FiletypeGroup
+    "autocmd!
+    "au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+"augroup END
 
-"====== Vue ======="
 "====== Bash ======"
 

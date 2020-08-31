@@ -5,7 +5,9 @@ set history=1000
 set undofile
 set undoreload=10000
 set autoindent
+set updatetime=500
 set ttyfast
+set cursorline
 " set hidden set wildmenu
 " Show partial commands in the last line of the screen
 set showcmd
@@ -33,13 +35,18 @@ set number
 set rnu "relative number from current line.
 " Quickly time out on keycodes, but never time out on mappings
 set notimeout ttimeout ttimeoutlen=200
+set clipboard=unnamed
+set nobackup nowritebackup noswapfile
+set undofile undolevels=1000 undoreload=3000 undodir=$HOME/.vim/undo/
+
+set viminfo='10,\"100,:20,%,n$HOME/.vim/viminfo
 
 "=======Characters Visualization======="
 set encoding=utf-8
 set list
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:•,nbsp:•
 set ts=4 sts=4 sw=4 expandtab
-let g:indentLine_color_term=239
+"let g:indentLine_color_term=239
 set fillchars=diff:⣿,vert:│
 set wrap
 
@@ -61,12 +68,15 @@ set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
 
 "=======Backup======"
-set nobackup                       " enable backups
+"set nobackup                       " enable backups
 set noswapfile
 
 set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
+
+" for HRM
+set backupcopy=yes
 
 " Make those folders automatically if they don't already exist.
 if !isdirectory(expand(&undodir))
@@ -89,7 +99,7 @@ set nofoldenable
 "=========Color Scheme========="
 "colorscheme tender "gVim
 "set background=dark
-let g:solarized_diffmode="high"
+"let g:solarized_diffmode="high"
 
 "=====NeoVim===="
 "language en_US
