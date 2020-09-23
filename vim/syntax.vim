@@ -1,4 +1,3 @@
-syntax on
 
 "======= General File Types ======"
 " when is compiled with autocommands.

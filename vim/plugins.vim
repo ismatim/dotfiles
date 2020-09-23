@@ -11,6 +11,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive' " help fugitive
+Plug 'tpope/vim-rhubarb'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -37,7 +38,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'mileszs/ack.vim'
+"Plug 'mileszs/ack.vim'
 Plug 'mhinz/vim-grepper'
 Plug 'ianks/vim-tsx', { 'for': ['tsx'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['tsx', 'ts'] }
