@@ -38,7 +38,14 @@ set notimeout ttimeout ttimeoutlen=200
 set clipboard=unnamed
 set nobackup nowritebackup noswapfile
 set undofile undolevels=1000 undoreload=3000 undodir=$HOME/.vim/undo/
-
+set encoding=UTF-8
+" Give more space for displaying messages.
+set cmdheight=2
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
 set viminfo='10,\"100,:20,%,n$HOME/.vim/viminfo
 
 "=======Characters Visualization======="
@@ -94,12 +101,10 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 
-"==== vimdiff === "
-
-"=========Color Scheme========="
-"colorscheme tender "gVim
-"set background=dark
-"let g:solarized_diffmode="high"
-
 "=====NeoVim===="
 "language en_US
+
+
+"==== Noteworth ====
+source ~/UNIT_DATA/projects/noteworth/code/scripts/setup.vim
+

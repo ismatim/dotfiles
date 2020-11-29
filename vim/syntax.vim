@@ -1,4 +1,3 @@
-syntax on
 
 "======= General File Types ======"
 " when is compiled with autocommands.
@@ -100,6 +99,18 @@ augroup END
     "autocmd!
     "au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 "augroup END
+"
+"====== Python======"
+au BufNewFile, BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
 
 "====== Bash ======"
+
 
