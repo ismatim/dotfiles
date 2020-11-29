@@ -212,5 +212,6 @@ nnoremap <leader>so :OpenSession!<Space>
 nnoremap <leader>ss :SaveSession!<Space>
 
 "======= Prettier ======="
-nmap <Leader>p <Plug>(Prettier)
+nmap <Leader>p <Plug>(PrettierAsync)
+
 

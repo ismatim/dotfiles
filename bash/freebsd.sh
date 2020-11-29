@@ -30,7 +30,7 @@ function FreeBSDConfiguration()
     # get ip local address
     alias localip="ipconfig getifaddr en0"
     # Environment Variables
-    export EDITOR="/usr/local/bin/vim"
+    export EDITOR="/usr/local/bin/nvim"
     # Execute script for git in prompt.
     #PS1="$PS1\$($(cat "${HOME}/startup/bash/scripts/git-ps1.sh"))"
 
