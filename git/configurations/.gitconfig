@@ -1,0 +1,113 @@
+[user]
+    name = Ismael J. Tisminetzky
+    email = ismael@gmail.com
+
+[core]
+    editor = nvim
+#no rewritting history
+    denyNonFastForwards=true
+#no deleting history
+    denyDeletes=true
+#check object consistency
+    fsckObjects=true
+	autocrlf = false
+	preloadindex = true
+	fscache = true
+	whitespace = cr-at-eol
+	ignorecase = false
+
+[push]
+	default = simple
+[alias]
+    alias = config --get-regexp alias
+    viewconfig = config --get-regexp "user|core|color|remote|difftool|mergetool|diff"
+    loggydate = log  --graph --decorate --date=local
+    loggy = log  --oneline --graph --decorate
+    last = log  --oneline --graph --decorate  -1 HEAD
+    lastx ="!f(){ git log  --oneline --graph --decorate  -$1 HEAD;}; f"
+    acp="!f(){ git add -u; git commit -m \"$@\"; git push;}; f"
+    ac="!f(){ git add -u; git commit -m \"$@\";}; f"
+    cbp = "!f() { git cb $1; git push -u origin $1;}; f"
+    bs="!f(){ git branch --set-upstream-to $@; }; f"
+    ps="!f(){ git push --set-upstream origin $@; }; f"
+    logrange="!f(){ git log --pretty=short -u -L $@;}; f"
+    fileonly= log --name-only
+    onlyfile= log --name-only
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+    filelog = log -u
+    fl = log -u
+    flw = log -u --word-diff
+    glog = log -E -i --grep
+    unstage = reset HEAD --
+    ra = "!f() { git add remote $1 $2;}; f"
+    ours = "!f() { git checkout --ours $@ && git add $@;}; f"
+    theirs = "!f() { git checkout --theirs $@ && git add $@;}; f"
+    pulma = pull origin master
+    pusma = push origin master
+    comm = commit -m
+    st = status
+    stu = status -uno
+    ap = add --patch
+    aa = add --all
+    bv = branch -vv
+    ba = branch -ra
+    bd = branch -d
+    ca = commit --amend
+    cb = checkout -b
+    cm = commit -a --amend -C HEAD
+    ci = commit -a -v
+    co = checkout
+    di = diff
+    dt = difftool
+    logall = log  --oneline --graph --all --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    ld = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short --graph
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    mm = merge --no-ff
+    st = status --short --branch
+    tg = tag -a
+    pu = push --tags
+    un = reset --hard HEAD
+    uh = reset --hard HEAD^
+    pulltheirs =  pull -X theirs
+    mergetheirs = merge --strategy-option theirs
+    mergeours = merge --strategy-option ours
+    bl = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+#---- alias with vim ----
+    diffv ="!f(){ git diff $1 $2 $3 $4 | vim -R -;}; f"
+    logv ="!f(){ git log $1 $2 $3 $4  | vim -R -;}; f"
+    loggyv ="!f(){ git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -;}; f"
+
+[color]
+    diff =   auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true
+
+[diff]
+	tool = vimdiff
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+[credential]
+	helper = store
+[difftool]
+	prompt = false
+[mergetool]
+    prompt = false
+[pull]
+	default = simple
+[web]
+	browser = ch
+[browser "ch"]
+	cmd = open -a \"/Applications/Google Chrome.app\"
+[gc]
+	auto = 256
+[commit]
+    gpgsign = false
+[gpg]
+    program=/usr/local/bin/gpg2
