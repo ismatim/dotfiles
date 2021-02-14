@@ -26,7 +26,7 @@ function FreeBSDConfiguration()
     #export PAGER="/usr/local/bin/nvim -f -R -"
     # Execute script for git in prompt.
     #PS1="$PS1\$($(cat "${HOME}/startup/bash/scripts/git-ps1.sh"))"
-
+	export PS1="\T ø "
     source $WORKFOLDER/tools/code/unix/functions/grep/functions/g
     source $WORKFOLDER/tools/code/unix/functions/findrecursive
     source $WORKFOLDER/tools/code/git/functions/currentbranch

@@ -13,9 +13,9 @@ Plug 'tpope/vim-fugitive'" help fugitive
 Plug 'tpope/vim-rhubarb'
 
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for':['python'] }
 else
-  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete.nvim',{ 'for':['python'] }
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -30,7 +30,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'w0rp/ale', {'for': ['python', 'sql', 'vim', 'bash', 'sh', 'javascript' ]}
   let g:ale_lint_on_text_changed='normal'
 Plug 'Chiel92/vim-autoformat'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['js', 'ts','tsx'] }
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'mattn/emmet-vim' " Expand html tags
@@ -44,7 +44,8 @@ Plug 'mileszs/ack.vim'
 Plug 'mhinz/vim-grepper'
 "Plug 'ianks/vim-tsx', { 'for': ['tsx'] }
 "Plug 'leafgarland/typescript-vim', { 'for': ['tsx', 'ts'] }
-Plug 'ekalinin/Dockerfile.vim'
+"Plug 'ekalinin/Dockerfile.vim', { 'for': ['dockerfile'] }
+
 " Linters
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
@@ -60,8 +61,7 @@ Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'nvie/vim-flake8', {'for': ['python', 'sql' ]}
 Plug 'davidhalter/jedi-vim', {'for': ['python', 'sql' ]}
 Plug 'zchee/deoplete-jedi', {'for': ['python', 'sql' ]}
-Plug 'morhetz/gruvbox'
-
+Plug 'morhetz/gruvbox', {'for': ['python', 'sql', 'vim', 'bash', 'sh', 'javascript' ]}
 
 call plug#end()
 
