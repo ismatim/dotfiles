@@ -12,9 +12,6 @@ if has("autocmd")
     autocmd BufRead,BufNewFile .mongorc set filetype=javascript
 endif
 
-autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-
 "===== HTML ======"
 augroup filetype_html
     autocmd!
@@ -44,9 +41,13 @@ augroup filetype_javascript
     autocmd FileType javascript :iabbrev <buffer> cnt const  =<left><left>  
     autocmd FileType javascript :iabbrev <buffer> cns console.log(' ')<left><left>
     autocmd FileType javascript :iabbrev <buffer> cnsj console.log(' ' + JSON.stringify())<left><left>
-
+"===== Typescript ===== "
+"This is needed because sometimes the syntax highlighting is lost.
+    autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+    autocmd FileType typescriptreact setlocal ts=2 sts=2 sw=2 shiftwidth=2 expandtab
+    autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+    autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 augroup END
-
 
 "===== SCSS ======"
 augroup filetype_scss
@@ -112,5 +113,3 @@ au BufNewFile, BufRead *.py
 
 
 "====== Bash ======"
-
-

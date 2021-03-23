@@ -12,13 +12,14 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'" help fugitive
 Plug 'tpope/vim-rhubarb'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for':['python'] }
-else
-  Plug 'Shougo/deoplete.nvim',{ 'for':['python'] }
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+"if has('nvim')
+  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'for':['python'] }
+"else
+  "Plug 'Shougo/deoplete.nvim',, { 'do': ':UpdateRemotePlugins', 'for':['python'] }
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
+"endif
+
 
 " INTEGRATION TOOLS
 
@@ -26,43 +27,66 @@ augroup LastPositionJump
   autocmd! BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
+"Plug 'w0rp/ale', {'for': ['python', 'sql', 'vim', 'bash', 'sh', 'javascript', 'typescript' ]}
+  "let g:ale_lint_on_text_changed='normal'
 Plug 'Chiel92/vim-autoformat'
-Plug 'w0rp/ale', {'for': ['python', 'sql', 'vim', 'bash', 'sh', 'javascript' ]}
-  let g:ale_lint_on_text_changed='normal'
-Plug 'Chiel92/vim-autoformat'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['js', 'ts','tsx'] }
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'mattn/emmet-vim' " Expand html tags
 "Plug 'patstockwell/vim-monokai-tasty' "javascript
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
+
+""===Searchers==""
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-"Plug 'ludovicchabant/vim-gutentags', {'for': ['python', 'sql' ]}
 Plug 'mileszs/ack.vim'
 Plug 'mhinz/vim-grepper'
-"Plug 'ianks/vim-tsx', { 'for': ['tsx'] }
-"Plug 'leafgarland/typescript-vim', { 'for': ['tsx', 'ts'] }
-"Plug 'ekalinin/Dockerfile.vim', { 'for': ['dockerfile'] }
 
-" Linters
+""===Typescript==""
+"Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['js', 'ts','tsx'] }
+Plug 'vim-airline/vim-airline'    " Vim powerline
+Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+" CoC extensions
+let g:coc_global_extensions = ['coc-solargraph', 'coc-tsserver', 'coc-json', 'coc-jedi']
+
+" Add CoC Prettier if prettier is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+" Add CoC ESLint if ESLint is installed
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
+
+"Plug 'pangloss/vim-javascript', { 'for': ['javscript', 'js'] }
+    " JavaScript support
+Plug 'leafgarland/typescript-vim', { 'for': ['tsx', 'ts'] }
+" for js files it is needed to set filetype=typescriptreact
+Plug 'peitalin/vim-jsx-typescript', { 'for': ['jsx', 'tsx', 'ts'] }
+Plug 'joshdick/onedark.vim'
+
+"==Snippets=="
+"Plug 'ludovicchabant/vim-gutentags', {'for': ['python', 'sql' ]}
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'branch': 'release/1.x',
-  \ 'for': [ 'javascript', 'css', 'json', 'markdown', 'yaml', 'html', 'python' ] }
+  \ 'for': [ 'javascript', 'css', 'json', 'markdown', 'yaml', 'html', 'python', 'ts','tsx' ] }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'epilande/vim-es2015-snippets'
-"python
+
+"==Python=="
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 Plug 'kristijanhusak/vim-dadbod-completion'
 Plug 'nvie/vim-flake8', {'for': ['python', 'sql' ]}
 Plug 'davidhalter/jedi-vim', {'for': ['python', 'sql' ]}
 Plug 'zchee/deoplete-jedi', {'for': ['python', 'sql' ]}
-Plug 'morhetz/gruvbox', {'for': ['python', 'sql', 'vim', 'bash', 'sh', 'javascript' ]}
-
+Plug 'morhetz/gruvbox', {'for': ['python', 'sql', 'bash', 'sh']}
+"Plug 'ekalinin/Dockerfile.vim', { 'for': ['dockerfile'] }
+"
 call plug#end()
 
 "==================================="
@@ -74,7 +98,7 @@ let g:jedi#completions_enabled = 0
 let g:jedi#goto_stubs_command = "<leader>jg"
 " open the go-to function in split, not another buffer
 let g:jedi#use_splits_not_buffers = "right"
-let jedi#force_py_version=3.7
+"let jedi#force_py_version=3.7
 
 "============ vim-gutentags ========"
 " vim-gtfo "
@@ -127,7 +151,8 @@ let g:gutentags_exclude_filetypes = [ '*.md', '*.mdx']
 "=========== vim-fugitive ========"
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 "=========== Deoplete ========"
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
+            \
 "
 "=========== Utils Snippet ========"
 " Examples of use: insert mode: rfc<c-l>
@@ -148,15 +173,16 @@ nnoremap <leader>up :vsplit ~/.vim/plugged/vim-snippets/snippets/python.snippets
 "colorscheme vim-monokai-tasty  "javascript
 "
 "====== Color gruvbox ======= "
-"let g:gruvbox_italicize_comments='1'
-"let g:gruvbox_italicize_strings='1'
+let g:gruvbox_italicize_comments='1'
+let g:gruvbox_italicize_strings='1'
 let g:gruvbox_contrast_dark='dark'
-colorscheme  gruvbox "python
 syntax on
-if g:colors_name == "gruvbox"
-    highlight Normal ctermbg=16 guibg=#000000
-    "List other overrides here
-endif
+"highlight Normal ctermbg=16 guibg=#000000
+"colorscheme  gruvbox "python
+"if g:colors_name == "gruvbox"
+    "highlight Normal ctermbg=16 guibg=#000000
+    ""List other overrides here
+"endif
 
 "================ ACK =============="
 
@@ -224,14 +250,6 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 
 
 
-"====== Airline Plugin ========="
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-"" Show just the filename
-"let g:airline#extensions#tabline#fnamemod = ':t'
-"===== typewriter theme ==== "
-
 "========= Autoformat ========="
 "au BufWrite * :Autoformat
 
@@ -239,49 +257,42 @@ let g:fzf_commands_expect = 'alt-enter,ctrl-x'
 "switch location list to quicklist view
 "let g:ale_set_loclist = 0
 "let g:ale_set_quickfix = 1
-let g:ale_list_window_size = 5
+"let g:ale_list_window_size = 5
 "" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+"let g:airline#extensions#ale#enabled = 1
+"nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+"nmap <silent> <C-j> <Plug>(ale_next_wrap)
 "run linters only when I saved
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_save = 1
+"let g:ale_lint_on_text_changed = 'normal'
+"let g:ale_lint_on_save = 1
 " You can disable this option too
 " if you don't want linters to run on opening a file
-let g:ale_lint_on_enter = 1
-let g:ale_linters = {
-            \ 'jsx': ['eslint'],
-            \ 'javascript': ['eslint'],
-            \ 'python': ['mypy', 'flake8']
-            \}
+"let g:ale_lint_on_enter = 1
+"let g:ale_linters = {
+"            \ 'jsx': ['eslint'],
+"            \ 'javascript': ['eslint'],
+"            \ 'python': ['mypy', 'flake8']
+"            \}
 
 "let g:ale_linter_aliases = {'jsx': 'css'}
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --jsx-bracket-same-line true'
-let g:ale_fixers = {
-            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \   'html': ['prettier'],
-            \   'scss': ['prettier'],
-            \   'javascript': ['eslint'],
-            \   'bash': ['shellcheck']
-            \}
+"let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+"let g:ale_sign_warning = '.'
+"let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --jsx-bracket-same-line true'
+"let g:ale_fixers = {
+"            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+"            \   'html': ['prettier'],
+"            \   'scss': ['prettier'],
+"            \   'javascript': ['eslint'],
+"            \   'bash': ['shellcheck']
+"            \}
 
-let g:ale_echo_msg_format = '%linter%: %s (%code%)'
+"let g:ale_echo_msg_format = '%linter%: %s (%code%)'
 
 "let errorformat =
         "\ '%f:%l:%c: %trror: %m,' .
         "\ '%f:%l:%c: %tarning: %m,' .
         "\ '%f:%l:%c: %tote: %m'
 ""
-"-------JAVA ECLIMD-------"
-"autocmd FileType java map <buffer> <leader>ff :%JavaFormat<CR>
-"autocmd FileType java map <buffer> <leader>ff :%JavaFormat<CR>
-
-"----------plugin/vim-javacomplete2--------"
-"autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
 "==========Emmet VIM==============="
 
 "Current Key is <Ctrl> + Y
@@ -319,44 +330,87 @@ let g:prettier#exec_cmd_async = 1
 let g:prettier#quickfix_auto_focus = 0
 
 
-"highlight clear
+colorscheme onedark
+let g:airline_theme='onedark'
+set termguicolors
+"let g:onedark_terminal_italics=1 
 
-"highlight CursorColumn ctermfg=NONE    ctermbg=236  cterm=NONE
-"highlight CursorLine   ctermfg=NONE    ctermbg=236  cterm=NONE
-"highlight CursorLineNr ctermfg=7       ctermbg=236  cterm=NONE
-"highlight DiffAdd      ctermfg=2       ctermbg=NONE cterm=NONE
-"highlight DiffChange   ctermfg=2       ctermbg=NONE cterm=NONE
-"highlight DiffDelete   ctermfg=1       ctermbg=NONE cterm=NONE
-"highlight DiffText     ctermfg=2       ctermbg=236  cterm=NONE
-"highlight FoldColumn   ctermfg=248     ctermbg=NONE cterm=italic
-"highlight Folded       ctermfg=248     ctermbg=NONE cterm=italic
-"highlight LineNr       ctermfg=238     ctermbg=NONE cterm=NONE
-"highlight MatchParen   cterm=underline ctermbg=NONE cterm=NONE
-"highlight NonText      ctermfg=236     ctermbg=NONE cterm=NONE
-"highlight Normal       ctermfg=NONE    ctermbg=NONE cterm=NONE
-"highlight Pmenu        ctermfg=15      ctermbg=236  cterm=NONE
-"highlight PmenuSbar    ctermfg=7       ctermbg=NONE cterm=NONE
-"highlight PmenuSel     ctermfg=236     ctermbg=2    cterm=NONE
-"highlight PmenuThumb   ctermfg=7       ctermbg=NONE cterm=NONE
-"highlight SignColumn   ctermfg=NONE    ctermbg=NONE cterm=NONE
-"highlight SpellBad     ctermfg=NONE    ctermbg=NONE cterm=underline
-"highlight SpellCap     ctermfg=NONE    ctermbg=NONE cterm=underline
-"highlight Error        ctermfg=1       ctermbg=NONE cterm=underline
-"highlight StatusLine   ctermfg=15      ctermbg=236  cterm=bold
-"highlight StatusLineNC ctermfg=245     ctermbg=0    cterm=NONE
-"highlight VertSplit    ctermfg=236     ctermbg=236  cterm=NONE
-"highlight Visual       ctermfg=NONE    ctermbg=238  cterm=NONE
-"highlight WildMenu     ctermfg=236     ctermbg=2    cterm=NONE
-"highlight qfFileName   ctermfg=245     ctermbg=NONE cterm=italic
-"highlight qfLineNr     ctermfg=238     ctermbg=NONE cterm=NONE
-"highlight qfSeparator  ctermfg=0       ctermbg=NONE cterm=NONE
+highlight Normal guibg=#202328
+highlight MatchParen guifg=#C678DD guibg=#504066
+highlight LineNr    guifg=#151822
+highlight CursorLineNr guifg=#56B6C2
+highlight Error guifg=#f57373 guibg=#804040
+highlight vimError guifg=#f57373 guibg=#804040
 
-"highlight Comment        ctermfg=248 ctermbg=NONE cterm=NONE
-"highlight String         ctermfg=10  ctermbg=NONE cterm=NONE
-"highlight htmlH1         ctermfg=15  ctermbg=NONE cterm=bold
-"highlight htmlItalic     ctermfg=7   ctermbg=NONE cterm=italic
-"highlight htmlItalicBold ctermfg=15  ctermbg=NONE cterm=italic
-"highlight htmlBoldItalic ctermfg=15  ctermbg=NONE cterm=bold
+highlight  IndentGuidesEven guibg=#2a2e30 guifg=#24282a
+highlight  IndentGuidesOdd guibg=#262a2c guifg=#24282a
+highlight  Comment cterm=italic guifg=#4a5158
+highlight  String guifg=#98C379 guibg=#2a2e34
+
+" Yellows
+hi Number guifg=#E5C07B
+hi Special guifg=#E5C07B
+hi Boolean guifg=#E5C07B
+hi Type guifg=#F0A15F
+
+" purple
+hi CtrlPMatch guifg=#ba9ef7
+hi Visual guibg=#364652
+hi Keyword guifg=#ba9ef7
+hi Function guifg=#5682A3
+
+" light blue
+hi tsxTagName guifg=#59ACE5
+" dark blue
+hi tsxCloseString guifg=#2974a1
+hi tsxCloseTag guifg=#2974a1
+hi tsxAttributeBraces guifg=#2974a1
+hi tsxEqual guifg=#2974a1
+" green
+hi tsxAttrib guifg=#1BD1C1
 
 
+" cyan
+hi Constant guifg=#56B6C2
+hi typescriptBraces guifg=#56B6C2
+hi typescriptEndColons guifg=#56B6C2
+hi typescriptRef guifg=#56B6C2
+hi typescriptPropietaryMethods guifg=#56B6C2
+hi typescriptEventListenerMethods guifg=#56B6C2
+hi typescriptFunction guifg=#56B6C2
+hi typescriptVars guifg=#56B6C2
+hi typescriptParen guifg=#56B6C2
+hi typescriptDotNotation guifg=#56B6C2
+hi typescriptBracket guifg=#56B6C2
+hi typescriptBlock guifg=#56B6C2
+hi typescriptJFunctions guifg=#56B6C2
+hi typescriptSFunctions guifg=#56B6C2
+hi typescriptInterpolationDelimiter guifg=#56B6C2
+hi typescriptExceptions guifg=#DDA671
+hi typescriptIdentifier guifg=#65809D
+hi typescriptStorageClass guifg=#65809D
 
+" JSX Dark Blue and Neon Green highlights
+hi xmlEndTag guifg=#2974a1
+hi tsxCloseString guifg=#15608f
+hi htmlTag guifg=#2974a1
+hi htmlEndTag guifg=#2974a1
+hi htmlTagName guifg=#59ACE5
+hi tsxAttrib guifg=#1BD1C1
+
+hi tsxTypeBraces guifg=#BDA7CC
+hi tsxTypes guifg=#8D779C
+hi tsxIfOperator guifg=#56B6C2
+hi tsxElseOperator guifg=#56B6C2
+
+" React keywords
+hi ReactState guifg=#C176A7
+hi ReactProps guifg=#D19A66
+hi ApolloGraphQL guifg=#CB886B
+hi Events ctermfg=204 guifg=#56B6C2
+hi ReduxKeywords ctermfg=204 guifg=#C678DD
+hi WebBrowser ctermfg=204 guifg=#56B6C2
+hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
+
+"highlight Normal ctermbg=16 guibg=#000000
+autocmd BufNewFile,BufRead *.js,*.tsx,*.jsx set filetype=typescriptreact
