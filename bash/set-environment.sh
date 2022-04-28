@@ -63,7 +63,7 @@ function GeneralConfiguration()
 	alias ghome="cd ~"
 	alias path='echo -e ${PATH//:/\\n}'
 	#avoid delete massive.
-	#alias rm="rm -i"
+	alias rm="rm -i"
 	#avoid conflict with tmux.
 	bind '"\C-p": beginning-of-line'
 
@@ -82,11 +82,11 @@ function GeneralConfiguration()
 function LinuxConfiguration()
 {
 	#the case for ubuntu in windows 10.
-	LINUXPATH="/home/isma/startup/bash/linux.sh"
+	LINUXPATH="/home/isma/dotfiles/bash/linux.sh"
 
 	if [ -f $LINUXPATH ]; then
-		source /home/isma/startup/bash/linux.sh
-	else  source $HOME/startup/bash/linux.sh;
+		source /home/isma/dotfiles/bash/linux.sh
+	else  source $HOME/dotfiles/bash/linux.sh;
 	fi
 }
 
@@ -99,13 +99,13 @@ function OSXConfiguration()
 {
 	#General O.S functions
 	export PS1="\T|\W>"
-	source  $HOME/startup/bash/osx.sh
-	source  $HOME/startup/java/java-init.sh
+	source  $HOME/dotfiles/bash/osx.sh
+	source  $HOME/dotfiles/java/java-init.sh
 }
 
 function FreeBSDConfiguration()
 {
-    STARTUP="/home/ismatim/startup"
+    STARTUP="/home/ismatim/dotfiles"
 	source  ${STARTUP}/freebsd/freebsd.sh
 }
 

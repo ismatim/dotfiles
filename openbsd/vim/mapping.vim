@@ -27,11 +27,6 @@ let maplocalleader = "¡"
 "========= Functions ========="
 "============================="
 
-" StripTrailingWhiteSpaces
-source ~/startup/vim/functions/striptrailingspaces.vim
-" Go To Jump
-source ~/startup/vim/functions/gojump.vim
-
 "========== Folding ========="
 
 set foldlevelstart=0
@@ -122,7 +117,7 @@ inoremap <leader>s :execute "normal! :FZF!"
 vnoremap <leader>s <ESC>:FZF!
 vnoremap <leader>rg <ESC>:Rg!
 nnoremap <leader>rg :Rg!<CR>
-nnoremap <leader>gl :Git log -p -- %<CR>
+nnoremap <leader>gl :Git! log -p -- %<CR>
 
 "show buffers
 vnoremap <leader>sb :Buffers!<cr>
@@ -145,9 +140,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit ~/startup/vim/general.vim<cr>
 nnoremap <leader>em :vsplit ~/startup/vim/mapping.vim<cr>
 nnoremap <leader>es :vsplit ~/startup/vim/syntax.vim<cr>
-nnoremap <leader>ept :vsplit ~/startup/vim/plugins.ts.vim<cr>
-nnoremap <leader>epp :vsplit ~/startup/vim/plugins.python.vim<cr>
-nnoremap <leader>ec :vsplit ~/.config/nvim/init.vim<cr>
+nnoremap <leader>ep :vsplit ~/startup/vim/plugins.vim<cr>
 
 "---Vim Diff Configuration---"
 nnoremap <leader>ed :vsplit ~/startup/vim/vimdiff.vim<cr>
@@ -197,14 +190,14 @@ nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
 
 
 "=======ALE LINT========="
-"nnoremap <leader>l :ALELint<cr>
-"inoremap <leader>l :execute "normal! :ALELint"<cr>
-"vnoremap <leader>l <ESC>:ALELint<cr>
+nnoremap <leader>l :ALELint<cr>
+inoremap <leader>l :execute "normal! :ALELint"<cr>
+vnoremap <leader>l <ESC>:ALELint<cr>
 
 "for the list location navigation:
-"nnoremap <space>l :lnext<CR>
-"nnoremap <space>p :lprevious<CR>
-"nnoremap <space>r :lrewind<CR>
+nnoremap <space>l :lnext<CR>
+nnoremap <space>p :lprevious<CR>
+nnoremap <space>r :lrewind<CR>
 
 "TODO: find best way to show erros through erroformat in location list.
 " check: https://github.com/jonsmithers/dotfiles/blob/master/vim/vimrc
@@ -213,20 +206,7 @@ nnoremap <leader>* :Grepper -tool ag -cword -noprompt<cr>
 nnoremap <leader>so :OpenSession!<Space>
 nnoremap <leader>ss :SaveSession!<Space>
 
-"======= Prettier (vim-prettier-plugin) ======="
+"======= Prettier ======="
 nmap <Leader>p <Plug>(PrettierAsync)
-
-
-"======= CoC ======="
-" Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 
 

@@ -12,14 +12,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'" help fugitive
 Plug 'tpope/vim-rhubarb'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
 " INTEGRATION TOOLS
 
 augroup LastPositionJump
@@ -30,11 +22,10 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'w0rp/ale', {'for': ['python', 'sql', 'vim', 'bash', 'sh', 'javascript' ]}
   let g:ale_lint_on_text_changed='normal'
 Plug 'Chiel92/vim-autoformat'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'mattn/emmet-vim' " Expand html tags
-"Plug 'patstockwell/vim-monokai-tasty' "javascript
+Plug 'patstockwell/vim-monokai-tasty' "javascript
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf'
@@ -42,25 +33,8 @@ Plug 'junegunn/fzf.vim'
 "Plug 'ludovicchabant/vim-gutentags', {'for': ['python', 'sql' ]}
 Plug 'mileszs/ack.vim'
 Plug 'mhinz/vim-grepper'
-"Plug 'ianks/vim-tsx', { 'for': ['tsx'] }
-"Plug 'leafgarland/typescript-vim', { 'for': ['tsx', 'ts'] }
-Plug 'ekalinin/Dockerfile.vim'
-" Linters
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'branch': 'release/1.x',
-  \ 'for': [ 'javascript', 'css', 'json', 'markdown', 'yaml', 'html', 'python' ] }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'epilande/vim-es2015-snippets'
-"python
-Plug 'tpope/vim-dadbod'
-Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'kristijanhusak/vim-dadbod-completion'
-Plug 'nvie/vim-flake8', {'for': ['python', 'sql' ]}
-Plug 'davidhalter/jedi-vim', {'for': ['python', 'sql' ]}
-Plug 'zchee/deoplete-jedi', {'for': ['python', 'sql' ]}
-Plug 'morhetz/gruvbox'
 
 
 call plug#end()
@@ -68,14 +42,6 @@ call plug#end()
 "==================================="
 "======== PLUGINS MAPPING =========="
 "==================================="
-"===== jedi =====
-"disable autocompletion, because we use deoplete for completion
-let g:jedi#completions_enabled = 0
-let g:jedi#goto_stubs_command = "<leader>jg"
-" open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
-let jedi#force_py_version=3.7
-
 "============ vim-gutentags ========"
 " vim-gtfo "
 let g:gtfo#terminals = { 'mac': 'iterm' }
@@ -144,20 +110,8 @@ nnoremap <leader>up :vsplit ~/.vim/plugged/vim-snippets/snippets/python.snippets
 
 "====== Color Monokai======= "
 "let macvim_skip_colorscheme=1
-"let g:vim_monokai_tasty_italic = 1
-"colorscheme vim-monokai-tasty  "javascript
-"
-"====== Color gruvbox ======= "
-"let g:gruvbox_italicize_comments='1'
-"let g:gruvbox_italicize_strings='1'
-let g:gruvbox_contrast_dark='dark'
-colorscheme  gruvbox "python
-syntax on
-if g:colors_name == "gruvbox"
-    highlight Normal ctermbg=16 guibg=#000000
-    "List other overrides here
-endif
-
+let g:vim_monokai_tasty_italic = 1
+colorscheme vim-monokai-tasty  "javascript
 "================ ACK =============="
 
 map <leader>a :Ack! ""<Left>
@@ -259,16 +213,6 @@ let g:ale_linters = {
 "let g:ale_linter_aliases = {'jsx': 'css'}
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '.'
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --jsx-bracket-same-line true'
-let g:ale_fixers = {
-            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \   'html': ['prettier'],
-            \   'scss': ['prettier'],
-            \   'javascript': ['eslint'],
-            \   'bash': ['shellcheck']
-            \}
-
-let g:ale_echo_msg_format = '%linter%: %s (%code%)'
 
 "let errorformat =
         "\ '%f:%l:%c: %trror: %m,' .
@@ -293,30 +237,6 @@ let g:user_emmet_settings = {
             \  },
             \}
 
-
-"-------- Prettier VIM -----------"
-
-"let g:prettier#autoformat = 0
-" print semicolons
-" Prettier default: true
-"let g:prettier#config#semi = 'false'
-
-" single quotes over double quotes
-" Prettier default: false
-let g:prettier#config#single_quote = 'true'
-" print spaces between brackets
-" Prettier default: true
-let g:prettier#config#bracket_spacing = 'true'
-" none|es5|all
-" Prettier default: none
-let g:prettier#config#trailing_comma = 'none'
-"The command :Prettier by default is synchronous but can also be forced async
-let g:prettier#exec_cmd_async = 1
-"execute Prettier on start
-"autocmd BufWritePre *.js,*.jsx,*.mjs,*.css,*.less,*.scss,*.json,*.md Prettier
-
-"remove autofocus after bug
-let g:prettier#quickfix_auto_focus = 0
 
 
 "highlight clear

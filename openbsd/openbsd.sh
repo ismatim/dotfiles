@@ -6,7 +6,8 @@ function OpenBSDConfiguration()
     # Declare variables.
     export WORKFOLDER="/home/${USER}"
 
-    PS1="\[\033[1;44m\]\u \w\[\033[0m\] "
+    PS1="\[\033[1;44m\]\T ø [\033[0m\]"
+    #PS1="\[\033[1;44m\]\u|\W\[\033[0m\] "
     export XTERM=xterm-256-color
     alias tmux="tmux -2"
     # Declare Alias

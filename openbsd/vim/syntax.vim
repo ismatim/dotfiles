@@ -8,9 +8,12 @@ if has("autocmd")
     autocmd BufNewFile,BufRead *.ejs set filetype=html
     autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
     "autocmd BufRead,BufNewFile .jsx set filetype=javascript.jsx
-    "autocmd BufRead,BufNewFile .*rc set filetype=json
+    autocmd BufRead,BufNewFile .*rc set filetype=json
     autocmd BufRead,BufNewFile .mongorc set filetype=javascript
 endif
+
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 "===== HTML ======"
 augroup filetype_html
@@ -28,25 +31,22 @@ augroup filetype_ejs
 augroup END
 
 "===== Javascript ===== "
-"augroup filetype_javascript
-    "autocmd!
-    "autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
-    "autocmd FileType javascript :iabbrev <buffer> iff if ( ){}else{}<left>
-    "autocmd FileType javascript :iabbrev <buffer> forr for (var i =0;;){<cr>/*code here*/<cr>};<left>
-    "autocmd FileType javascript :iabbrev <buffer> rtn return;
-    "autocmd FileType javascript :iabbrev <buffer> funn function(){<cr>}
-    "autocmd FileType javascript :iabbrev <buffer> arrow (e)=>{}<left>
-    "autocmd FileType javascript :iabbrev <buffer> imp import * from *;<left>
-    "autocmd FileType javascript :iabbrev <buffer> cnt const  =<left><left>
-    "autocmd FileType javascript :iabbrev <buffer> cns console.log(' ')<left><left>
-    "autocmd FileType javascript :iabbrev <buffer> cnsj console.log(' ' + JSON.stringify())<left><left>
-""===== Typescript ===== "
-""This is needed because sometimes the syntax highlighting is lost.
-    ""autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
-    ""autocmd FileType typescriptreact setlocal ts=2 sts=2 sw=2 shiftwidth=2 expandtab
-    "autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-    "autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-"augroup END
+augroup filetype_javascript
+    autocmd!
+    autocmd FileType javascript setlocal ts=2 sts=2 sw=2 shiftwidth=2 expandtab
+    autocmd FileType javascript nnoremap <buffer> <localleader>c I//<esc>
+    autocmd FileType javascript :iabbrev <buffer> iff if ( ){}else{}<left>
+    autocmd FileType javascript :iabbrev <buffer> forr for (var i =0;;){<cr>/*code here*/<cr>};<left>
+    autocmd FileType javascript :iabbrev <buffer> rtn return;
+    autocmd FileType javascript :iabbrev <buffer> funn function(){<cr>}
+    autocmd FileType javascript :iabbrev <buffer> arrow (e)=>{}<left>
+    autocmd FileType javascript :iabbrev <buffer> imp import * from *;<left>
+    autocmd FileType javascript :iabbrev <buffer> cnt const  =<left><left>  
+    autocmd FileType javascript :iabbrev <buffer> cns console.log(' ')<left><left>
+    autocmd FileType javascript :iabbrev <buffer> cnsj console.log(' ' + JSON.stringify())<left><left>
+
+augroup END
+
 
 "===== SCSS ======"
 augroup filetype_scss
@@ -110,4 +110,7 @@ au BufNewFile, BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
+
 "====== Bash ======"
+
+

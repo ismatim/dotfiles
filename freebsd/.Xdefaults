@@ -1,1 +1,56 @@
-XTerm*faceSize: 14
+! FONTS
+! -----------------------------------------------------------------------------
+  Xft.antialias:  true
+  Xft.hinting:    false
+  Xft.hintstyle:  0
+  Xft.dpi:        75
+  Xft.rgba:       none
+
+! ALL TERMINALS CONFIG | XTERM | URXVT
+! -----------------------------------------------------------------------------
+  *background:             #222222
+  *foreground:             #aaaaaa
+! *fading:                 40
+! *fadeColor:              #222222
+  *cursorColor:            #93a1a1
+  *pointerColorBackground: #586e75
+  *pointerColorForeground: #93a1a1
+
+! XTERM
+! -----------------------------------------------------------------------------
+  xterm*allowBoldFonts:     true
+  xterm*allowWindowOps:     true
+  xterm*boldMode:           false
+  xterm*charClass:          33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48,58:48,63:48,61:48,44:48,38:48,59:48
+  xterm*cursorBlink:        false
+  xterm*cutNewline:         true
+  xterm*faceName:           consolas
+  xterm*faceSize:           16
+  xterm*fastScroll:         true
+  xterm*fullscreen:         false
+  xterm*iconHint:           /home/vermaden/.icons/vermaden/xterm.xpm
+  xterm*internalBorder:     1
+  xterm*jumpScroll:         true
+  xterm*keepSelection:      true
+  xterm*loginShell:         true
+  xterm*metaSendsEscape:    true
+  xterm*multiScroll:        true
+  xterm*omitTranslation:    fullscreen
+  xterm*on4Clicks:          group
+  xterm*on5Clicks:          page
+  xterm*saveLines:          1024000
+  xterm*scaleHeight:        1.0
+  xterm*scrollKey:          true
+  xterm*scrollTtyOutput:    false
+  xterm*selectToClipboard:  true
+  xterm*SimpleMenu*font:    -*-clean-*-*-*-*-*-*-*-*-*-*-iso8859-2
+  xterm*termName:           xterm-256color
+  xterm*title:              xterm
+  xterm*veryBoldColors:     14
+  xterm*VT100*geometry:     150x40
+  xterm*VT100*translations: #override                                                           \n\
+                                       <btn1up>:    select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
+                            Ctrl       <key> minus: smaller-vt-font()                           \n\
+                            Ctrl       <key> plus:  larger-vt-font()                            \n\
+                            Ctrl Shift <key> C:     copy-selection(CLIPBOARD)                   \n\
+                            Ctrl Shift <key> V:     insert-selection(CLIPBOARD)
