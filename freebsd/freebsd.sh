@@ -3,7 +3,7 @@ function FreeBSDConfiguration()
 {
 
     set -o vi
-    export PATH=$PATH:~/usr/local/bin
+    export PATH=$PATH:~/usr/local/bin:~/dotfiles/freebsd/scripts/
     # Declare variables.
     export TOOLSFOLDER="/tank_data_1"
     export WORKFOLDER="/tank_data_1/projects/work"
