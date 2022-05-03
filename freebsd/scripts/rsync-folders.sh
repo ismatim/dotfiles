@@ -18,3 +18,5 @@ rsync -ahtrzvvv /home/ismatim/.git-credentials /tank_data_1/backup/home/
 rsync -ahtrzvvv /home/ismatim/.gnupg /tank_data_1/backup/home/
 rsync -ahtrzvvv /home/ismatim/.ssh /tank_data_1/backup/home/
 rsync -ahtrzvvv /home/ismatim/.password-store /tank_data_1/backup/home/
+rsync -ahtrzvvv /home/ismatim/.config/nvim /tank_data_1/backup/home/.config/
+rsync -ahtrzvvv /home/ismatim/.tmux /tank_data_1/backup/home/
