@@ -1,0 +1,6 @@
+#!/usr/local/bin/bash
+
+#Freensd
+sudo ln -s $(pwd)/cht /usr/sbin/cht
+
+echo "Installed!"
