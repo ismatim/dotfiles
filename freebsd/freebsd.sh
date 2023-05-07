@@ -32,10 +32,8 @@ function FreeBSDConfiguration()
 
     # Environment Variables
     export EDITOR="/usr/local/bin/nvim"
-    #export PAGER="/usr/local/bin/nvim -f -R -"
     # Execute script for git in prompt.
-    #PS1="$PS1\$($(cat "${HOME}/dotfiles/bash/scripts/git-ps1.sh"))"
-	  export PS1="\T ø "
+	  export PS1="\e[1;33m\T ø \e[m"
 	  # export PS1="\e[3;33;40m ø\e[0;37;40m "
     source $TOOLSFOLDER/tools/code/unix/functions/grep/functions/g
     source $TOOLSFOLDER/tools/code/unix/functions/findrecursive
@@ -86,5 +84,12 @@ function printCommandLine(){
    cat ${TOOLSFOLDER}/tools/code/unix/command_line_intro.md | egrep -o '`\w+`' | tr -d '`' | cowsay -W50
 }
 
+function SetupGolang(){
+  export GOROOT=/tank_data_1/tools/code/go/src/go
+  export GOPATH=/tank_data_1/tools/code/go/projects
+  export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+}
+
 FreeBSDConfiguration
+SetupGolang
 # printCommandLine

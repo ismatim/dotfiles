@@ -28,6 +28,7 @@
     acp="!f(){ git add -u; git commit -m \"$@\"; git push;}; f"
     ac="!f(){ git add -u; git commit -m \"$@\";}; f"
     cbp = "!f() { git cb $1; git push -u origin $1;}; f"
+    delbranch = "!f() { git branch -D $1; git push --delete origin $1;}; f"
     bs="!f(){ git branch --set-upstream-to $@; }; f"
     ps="!f(){ git push --set-upstream origin $@; }; f"
     logrange="!f(){ git log --pretty=short -u -L $@;}; f"

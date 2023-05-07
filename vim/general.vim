@@ -8,10 +8,10 @@ set autoindent
 set updatetime=500
 set ttyfast
 set cursorline
-" set hidden set wildmenu
 " Show partial commands in the last line of the screen
 set showcmd
 set hidden
+
 " Highlight searches (use <C-L> to temporarily turn off highlighting; see the
 " mapping of <C-L> below)
 set hlsearch incsearch
